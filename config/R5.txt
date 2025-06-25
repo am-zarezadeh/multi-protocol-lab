@@ -1,0 +1,152 @@
+
+!
+! Last configuration change at 13:54:05 UTC Sun Jun 15 2025
+!
+version 15.7
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback1000
+ no shutdown
+ ip address 5.5.5.5 255.255.255.255
+!
+interface Ethernet0/0
+ no shutdown
+ no ip address
+ duplex auto
+!
+interface Ethernet0/0.56
+ no shutdown
+ encapsulation dot1Q 56
+ ip address 10.6.5.2 255.255.255.252
+!
+interface Ethernet0/0.105
+ no shutdown
+ encapsulation dot1Q 105
+ ip address 10.5.10.1 255.255.255.252
+!
+interface Ethernet0/1
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+router ospf 1
+ redistribute bgp 200 subnets
+ network 10.5.10.0 0.0.0.3 area 0
+!
+router bgp 200
+ bgp router-id 5.5.5.5
+ bgp log-neighbor-changes
+ network 10.5.10.0 mask 255.255.255.252
+ network 10.6.5.0 mask 255.255.255.252
+ redistribute ospf 1 metric 10011
+ neighbor 10.6.5.1 remote-as 500
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

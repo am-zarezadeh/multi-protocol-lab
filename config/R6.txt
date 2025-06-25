@@ -1,0 +1,157 @@
+
+!
+! Last configuration change at 13:38:58 UTC Sun Jun 15 2025
+!
+version 15.7
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R6
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback1000
+ no shutdown
+ ip address 6.6.6.6 255.255.255.255
+!
+interface Ethernet0/0
+ no shutdown
+ no ip address
+ duplex auto
+!
+interface Ethernet0/0.56
+ no shutdown
+ encapsulation dot1Q 56
+ ip address 10.6.5.1 255.255.255.252
+!
+interface Ethernet0/0.69
+ no shutdown
+ encapsulation dot1Q 69
+ ip address 10.6.9.1 255.255.255.252
+!
+interface Ethernet0/0.613
+ no shutdown
+ encapsulation dot1Q 613
+ ip address 10.13.6.2 255.255.255.252
+!
+interface Ethernet0/1
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+router bgp 500
+ bgp router-id 6.6.6.6
+ bgp log-neighbor-changes
+ network 10.6.5.0 mask 255.255.255.252
+ network 10.6.9.0 mask 255.255.255.252
+ network 10.13.6.0 mask 255.255.255.252
+ neighbor 10.6.5.2 remote-as 200
+ neighbor 10.6.9.2 remote-as 500
+ neighbor 10.6.9.2 next-hop-self
+ neighbor 10.13.6.1 remote-as 500
+ neighbor 10.13.6.1 next-hop-self
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

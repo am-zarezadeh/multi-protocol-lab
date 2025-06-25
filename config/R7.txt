@@ -1,0 +1,142 @@
+
+!
+! Last configuration change at 13:38:11 UTC Sun Jun 15 2025
+!
+version 15.7
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R7
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ no shutdown
+ ip address 7.7.7.7 255.255.255.0
+!
+interface Ethernet0/0
+ no shutdown
+ no ip address
+ duplex auto
+!
+interface Ethernet0/0.137
+ no shutdown
+ encapsulation dot1Q 137
+ ip address 10.13.7.2 255.255.255.252
+!
+interface Ethernet0/1
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+!
+router bgp 300
+ bgp router-id 7.7.7.7
+ bgp log-neighbor-changes
+ network 7.7.7.0 mask 255.255.255.0
+ network 10.13.7.0 mask 255.255.255.252
+ neighbor 10.13.7.1 remote-as 500
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+!
+end
