@@ -1,0 +1,21 @@
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Et1/0, Et1/1, Et3/0, Et3/1
+                                                Et3/2, Et3/3
+34   VLAN0034                         active    
+56   VLAN0056                         active    
+69   VLAN0069                         active    
+105  VLAN0105                         active    
+110  VLAN0110                         active    
+129  VLAN0129                         active    
+137  VLAN0137                         active    
+138  VLAN0138                         active    
+210  VLAN0210                         active    
+311  VLAN0311                         active    
+412  VLAN0412                         active    
+613  VLAN0613                         active    
+913  VLAN0913                         active    
+1002 fddi-default                     act/unsup 
+1003 token-ring-default               act/unsup 
+1004 fddinet-default                  act/unsup 
+1005 trnet-default                    act/unsup 
