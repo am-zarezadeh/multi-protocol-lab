@@ -56,7 +56,7 @@ multi-protocol-lab/
 
 ## 🎥 ویدیوی معرفی سناریو
 - [تماشا در آپارات](https://www.aparat.com/v/jbe94mh)  
-- [تماشا در یوتیوب]([h](https://youtu.be/3VVDIBSxgYs?si=5DhXCeKEJ4mxrHFn))  
+- [تماشا در یوتیوب](https://youtu.be/3VVDIBSxgYs?si=5DhXCeKEJ4mxrHFn)
 
 ---
 ## ✅ وضعیت پروژه
